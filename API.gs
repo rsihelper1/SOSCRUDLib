@@ -31,3 +31,8 @@ function ProcessWebPost(e)
 {
    Logger.log("Post:" + e);
 }
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename)
+      .getContent();
+}
