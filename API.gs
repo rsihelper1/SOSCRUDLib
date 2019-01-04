@@ -38,11 +38,22 @@ function include(filename) {
   return HtmlService.createHtmlOutputFromFile(filename)
       .getContent();
 }
-
+/*
 function doGet(e){ 
    return ProcessWebGet(e);
 }
 
 function doPost(e) {
    return ProcessWebPost(e);
+}*/
+
+function doGet(e){ 
+   return HtmlService.createTemplateFromFile('index2.html')
+      .evaluate();
 }
+
+function doPost(e) {
+   return ProcessWebPost(e);
+}
+
+

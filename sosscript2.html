@@ -1,0 +1,43 @@
+<script>
+function onGetFieldsSuccess(fieldNamesJson) {
+	var fieldNames = JSON.parse(fieldNamesJson);
+
+
+	var fieldsHtml = "";
+	for (var i = 0; i < fieldNames.length; i++) {
+		console.log(fieldNames[i]);
+		console.log(fieldsHtml);
+
+		fieldsHtml += '<div class="form-group">';
+		fieldsHtml += '<label class="col-md-4 control-label" for="id">' + fieldNames[i] + '</label>';
+		fieldsHtml += '<div class="col-md-4">';
+		fieldsHtml += '<div class="input-group">';
+		fieldsHtml += '  <span class="input-group-addon" >  </span>'
+		fieldsHtml += '   <input id="' + fieldNames[i] + '" name="' + fieldNames[i] + '" type="text" placeholder="' + fieldNames[i] + ' of data table " class="form-control input-md">';
+		fieldsHtml += '</div>';
+		fieldsHtml += '</div>';
+		fieldsHtml += '</div>';
+
+	}
+
+	var div = document.getElementById('sosfields');
+	div.innerHTML += fieldsHtml;
+}
+
+function handleInsertFormSubmit(insertForm) {
+	google.script.run.withSuccessHandler(insertFormSubmitSuccess).processInsertForm(JSON.stringify(objectifyForm(insertForm)));
+}
+
+function insertFormSubmitSuccess(data) {}
+
+function objectifyForm(formArray) { //serialize data function
+
+	var returnArray = {};
+	for (var i = 0; i < formArray.length; i++) {
+		returnArray[formArray[i]['name']] = formArray[i]['value'];
+	}
+	return returnArray;
+}
+</script>
+
+
