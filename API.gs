@@ -22,7 +22,9 @@ function ProcessWebGet(e){
     return search_value_(e,ss);
   
   else  {
-   return HtmlService.createHtmlOutputFromFile('index.html');
+   return HtmlService.createTemplateFromFile('index.html')
+      .evaluate();
+      //createHtmlOutputFromFile('index.html');
   }
 }
 
@@ -35,4 +37,12 @@ function ProcessWebPost(e)
 function include(filename) {
   return HtmlService.createHtmlOutputFromFile(filename)
       .getContent();
+}
+
+function doGet(e){ 
+   return ProcessWebGet(e);
+}
+
+function doPost(e) {
+   return ProcessWebPost(e);
 }

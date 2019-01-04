@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
   <?!= include('sosstyle.html'); ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -20,29 +21,93 @@
  </div>
 
 <div align="center">
-<h1>SOS Google Spreadsheet BASED Database.</h1> 
+<legend>SOS People Management</legend>
 
+   <!-- FORM  -->	    
+<div class="col-md-6">
+<form  class="form-horizontal">
+<fieldset>
+ <div class="form-group">
+          <label class="col-md-4 control-label" for="id">ID</label>  
+          <div class="col-md-4">
+        <div class="input-group">
+              <span class="input-group-addon" >  </span>
+            <input id="id" name="id" type="text" placeholder="ID of user " class="form-control input-md">
+            </div>
+          </div>
+        </div>
 
-<form >
+        <!-- Prepended text-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="name">Name</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <span class="input-group-addon" >  </span>
+              <input id="name" name="name" class="form-control" placeholder="Full name of user" type="text">
+            </div>
+          </div>
+        </div>
+                <div class="form-group">
+          <label class="col-md-4 control-label" for="address">Address</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <span class="input-group-addon" >  </span>
+              <input id="address" name="address" class="form-control" placeholder="Address of user" type="text">
+            </div>
+          </div>
+        </div>
+                <div class="form-group">
+          <label class="col-md-4 control-label" for="city">City</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <span class="input-group-addon" >  </span>
+              <input id="city" name="city" class="form-control" placeholder="City of user" type="text">
+            </div>
+          </div>
+        </div>
+                <div class="form-group">
+          <label class="col-md-4 control-label" for="state">State</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <span class="input-group-addon" >  </span>
+              <input id="state" name="state" class="form-control" placeholder="State of user" type="text">
+            </div>
+          </div>
+        </div>
+                <div class="form-group">
+          <label class="col-md-4 control-label" for="zip">Zip</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <span class="input-group-addon" >  </span>
+              <input id="zip" name="zip" class="form-control" placeholder="Zip code of user" type="text">
+            </div>
+          </div>
+        </div>
+ </fieldset>
+<!--
 ID
 <input type = "text" name ="id" id="id">
 Name
 <input type = "text" name ="name" id="name">
-
+-->
 </form>
+</div>
 
 <div id="loader"></div>
 
 <p id="re"></p>
-
-<input type = "button"  id = "b1" onClick="insert_value()" value = "Insert"></input>
-<input type="button" onclick="read_value()" value="Read" />
-<input type="button" onclick="update_value()" value="Update" />
-<input type="button" onclick="delete_value()" value="Delete" />
+  <div class="form-group">
+<input class="btn btn-success" type = "button"  id = "b1" onClick="insert_value()" value = "Insert"></input>
+<input class="btn btn-success" type="button" onclick="read_value()" value="Read" />
+<input class="btn btn-success" type="button" onclick="update_value()" value="Update" />
+<input  class="btn btn-success"type="button" onclick="delete_value()" value="Delete" />
+</div>
 <a href="https://docs.google.com/spreadsheets/d/1OkXtxTaNxZbc84ZgYjqIA6rXzDDxNfeOtwA6xeVINPc/edit#gid=0" target="_blank">Click here to open Spread Sheet </a>
+  <div class="col-md-12">
+
+       <legend>Full Data</legend>
 <div id="showData"></div>
 </div>
-</body>
 <div align="center">
 
   <br>
@@ -50,7 +115,7 @@ Name
   <br>
   <form >
     Search By:
-    <select name="searchby" id="searchby">
+    <select name="searchby" id="searchby" >
       <option value="id">ID</option>
       <option value="name">Name</option>
       <option value="city">City</option>
@@ -59,14 +124,16 @@ Name
     </select>
 
     Search Text:
-    <input type = "text" name ="searchtext" id="searchtext">
+    <input  type = "text" name ="searchtext" id="searchtext" onkeydown="search_value()" />
     
     </form>
-    <input type="button" onclick="search_value()" value="Search" />
-    <div id="showSearchData"></div>
+    <input  class="btn btn-success" type="button" onclick="search_value()" value="Search" />
+   
   </div>
 
 </div>
+
+</body>
 <html>
 
 

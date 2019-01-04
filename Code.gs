@@ -7,7 +7,7 @@ function search_value_(request, ss)
   var searchSheetName="Search";
   
   Logger.log(request);  
-  var searchstr =  "=query(ProfileTable!A:G,\"select B,C where "; 
+  var searchstr =  "=query(ProfileTable!A:G,\"select B,C,D,E,F,G where "; 
   
   if(searchby == 'name')
   {
@@ -57,15 +57,13 @@ function search_value_(request, ss)
 
 function insert_value_(request,sheet){
  
- 
-   var id = request.parameter.id;
-  var country = request.parameter.name;
-  
+Logger.log(request); 
+
   var flag=1;
   var lr= sheet.getLastRow();
   for(var i=1;i<=lr;i++){
     var id1 = sheet.getRange(i, 2).getValue();
-    if(id1==id){
+    if(id1==request.parameter.id){
       flag=0;
   var result="Id already exist..";
     } }
@@ -73,7 +71,7 @@ function insert_value_(request,sheet){
   if(flag==1){
   var d = new Date();
     var currentTime = d.toLocaleString();
-  var rowData = sheet.appendRow([currentTime,id,country]);  
+  var rowData = sheet.appendRow([currentTime,request.parameter.id,request.parameter.name, request.parameter.address, request.parameter.city, request.parameter.state,request.parameter.zip]);  
   var result="Insertion successful";
   }
      result = JSON.stringify({
